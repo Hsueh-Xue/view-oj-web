@@ -54,13 +54,13 @@
             <span>{{ Number(scope.row.cnt) }}</span>
           </template>
         </el-table-column>
-<!--        <el-table-column label="last_CF" align="center" width="100px">-->
-<!--          <template v-slot="scope">-->
-<!--                        <p v-if="scope.row.last_cf_date">{{ comverTime(scope.row.last_cf_date).fromNow() }}</p>-->
-<!--&lt;!&ndash;            <p v-if="scope.row.last_cf_date">{{ scope.row.last_cf_date }}</p>&ndash;&gt;-->
-<!--            <p v-else>无记录</p>-->
-<!--          </template>-->
-<!--        </el-table-column>-->
+        <el-table-column label="last_CF" align="center" width="120px">
+          <template v-slot="scope">
+            <p v-if="scope.row.last_cf_date">{{ $moment(scope.row.last_cf_date).fromNow() }}</p>
+            <!--            <p v-if="scope.row.last_cf_date">{{ scope.row.last_cf_date }}</p>-->
+            <p v-else>无记录</p>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
   </div>
@@ -120,9 +120,7 @@ export default {
       this.loading = true
       rating()
           .then(res => {
-            console.log(res)
             for (let item of res.data) {
-              console.log(item);
               this.tableData.push(item)
             }
             this.reFreshChart()
@@ -156,5 +154,14 @@ export default {
 </script>
 
 <style scoped>
+.tableBox {
+  width: 1000px;
+  margin-right: 20px;
+}
 
+.ColoredName {
+  font-weight: 600;
+  padding: 3px 0 3px 0;
+  border-radius: 5px;
+}
 </style>

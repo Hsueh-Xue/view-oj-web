@@ -39,13 +39,10 @@
             </el-link>
           </template>
         </el-table-column>
-        <el-table-column label="CF" align="center" width="80px" prop="codeforces" sortable
-                         :sort-method="function(a,b) {return Number(a.rating) - Number(b.rating)}">
+        <el-table-column label="contest" align="center" width="120px" prop="codeforces" sortable
+                         :sort-method="function(a,b) {return Number(a.contest_cnt) - Number(b.contest_cnt)}">
           <template v-slot="scope">
-            <el-link :href="'#/user/'+scope.row.username+'?part=cf-rating'" :underline="false">{{
-                Number(scope.row.rating)
-              }}
-            </el-link>
+            <span>{{ Number(scope.row.contest_cnt) }}</span>
           </template>
         </el-table-column>
         <el-table-column label="Cnt" align="center" width="80px" prop="contest" sortable

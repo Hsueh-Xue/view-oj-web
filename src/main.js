@@ -3,10 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
-import Moment from 'moment';
+import Moment from 'moment'
+
 
 const app = createApp(App)
 installElementPlus(app)
-app.use(store).use(router).mount('#app').filter('comverTime',function(data,format){
-    return Moment(data).format(format);
-});
+app.use(store).use(router).mount('#app')
+app.config.globalProperties.$moment = Moment;

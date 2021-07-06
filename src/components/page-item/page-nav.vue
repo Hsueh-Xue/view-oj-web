@@ -2,9 +2,17 @@
   <div id="page-top">
     <el-menu :default-active="$route.path" class="page-nav" style="height:60px;width:100%;z-index:1000"
              mode="horizontal" router>
-      <el-menu-item index="/ranklist" route="/ranklist">Ranklist</el-menu-item>
+      <el-menu-item index="/" route="/">Ranklist</el-menu-item>
+      <template v-if="$store.state.user.userId">
+        <el-menu-item :index="'/user/'+$store.state.user.userId"
+                      :route="'/user/'+$store.state.user.userId">Userinfo
+        </el-menu-item>
+<!--        <template v-if="$store.state.user.permission === 1">-->
+<!--          <el-menu-item index="/admin" route="/admin">Admin</el-menu-item>-->
+<!--        </template>-->
+      </template>
       <div class="userBox">
-        <template v-if="$store.state.user.userid">
+        <template v-if="$store.state.user.userId">
           <span style="margin-right: 15px">Welcome,<user_change_box></user_change_box></span>
           <el-button icon="el-icon-user" @click="logout">Logout</el-button>
         </template>

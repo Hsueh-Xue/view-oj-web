@@ -1,6 +1,6 @@
 import axios from 'network/axios'
 
-export function login(username, password) {
+export function auth(username, password) {
   return axios({
     url: '/user/auth',
     method: 'post',

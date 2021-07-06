@@ -1,9 +1,16 @@
 const mutations = {
-    updateUserId(state, payload) {
-        state.userId = payload
+    modifyUserInfo(state, payload) {
+        state.userId = payload.id
+        state.username = payload.username
+        state.nickname = payload.nickname
     },
-    updateUsername(state, payload) {
-        state.username = payload
+    logout(state) {
+        state.userId = ''
+        state.username = ''
+        state.nickname = ''
+    },
+    modifyNickname(state, payload) {
+        state.nickname = payload
     }
 }
 

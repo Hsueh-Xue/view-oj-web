@@ -7,14 +7,14 @@
             {{ scope.$index + 1 }}
           </template>
         </el-table-column>
-        <el-table-column label="Userid" align="center">
+        <el-table-column label="Username" align="center">
           <template v-slot="scope">
             <el-link :href="'#/user/'+scope.row.username+'?part=page-top'" :underline="false">
               {{ scope.row.username }}
             </el-link>
           </template>
         </el-table-column>
-        <el-table-column label="Username" align="center">
+        <el-table-column label="Nickname" align="center">
           <template v-slot="scope">
             <el-link :href="'#/user/'+scope.row.username+'?part=page-top'" :underline="false">
               <b class="ColoredName" :style="getNameColorInfo(scope.row, 2)">
@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import {rating} from "network/user/user_ranklist";
+import {rating} from "network/user";
 
 export default {
   name: "ranklist",
@@ -95,14 +95,16 @@ export default {
     },
     getNameColor(row) {
       let rating = row.rating
-      if (rating <= 1500) return ['#808080', '#808080']
-      if (rating <= 1600) return ['#008000', '#008000']
-      if (rating <= 1800) return ['#03a89e', '#03a89e']
-      if (rating <= 2000) return ['#0000ff', '#0000ff']
-      if (rating <= 2200) return ['#aa00aa', '#aa00aa']
-      if (rating <= 2500) return ['#ff8c00', '#ff8c00']
-      if (rating <= 2800) return ['#ff7777', '#ff7777']
-      if (rating <= 3000) return ['#ff0000', '#ff0000']
+      if (rating < 1000) return ['#808080', '#808080']
+      if (rating < 1200) return ['#88CC22', '#88CC22']
+      if (rating < 1400) return ['#008000', '#008000']
+      if (rating < 1600) return ['#03A89E', '#03A89E']
+      if (rating < 1800) return ['#0000ff', '#0000ff']
+      if (rating < 2000) return ['#AA00AA', '#AA00AA']
+      if (rating < 2200) return ['#FF8C00', '#FF8C00']
+      if (rating < 2400) return ['#ff0000', '#FF8C00']
+      if (rating < 2700) return ['#ff0000', '#ff0000']
+      if (rating < 3000) return ['#FF00FF', '#ff0000']
       return ['#000000', '#ff0000']
     },
     getNameColorBack(row) {
@@ -125,29 +127,6 @@ export default {
             }
             this.reFreshChart()
           })
-      // that.$http.get(api + '/v2/user/rating')
-      //     .then(data => {
-      //       that.tableData = []
-      //       for (let item of data.data.data) {
-      //         if (that.showAll) {
-      //           if (!item.is_freshman) that.tableData.push(item)
-      //           else if (that.showFreshman) that.tableData.push(item)
-      //           continue
-      //         }
-      //         if (item.is_freshman) {
-      //           if (that.showFreshman) that.tableData.push(item)
-      //         } else {
-      //           if (that.showFreshman || item.status !== 1) continue
-      //           that.tableData.push(item)
-      //         }
-      //       }
-      //       that.reFreshChart()
-      //     })
-      //     .catch(function (error) {
-      //       if (error.response) {
-      //         that.$message.error(error.response.data.msg)
-      //       }
-      //     })
     }
   }
 }

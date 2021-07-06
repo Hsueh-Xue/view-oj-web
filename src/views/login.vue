@@ -37,13 +37,15 @@
 </template>
 
 <script>
+import {auth} from "network/login";
+
 export default {
   name: 'login',
   data() {
     return {
       FormData: {
-        username: '',
-        password: ''
+        username: '2017212212083',
+        password: '2017212212083'
       },
       rules: {
         username: [{required: true, message: 'Please enter your username!', trigger: 'blur'}],
@@ -55,10 +57,13 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$store.commit('login', {
-            username: this.FormData.username,
-            password: this.FormData.password
-          })
+          auth(this.FormData.username, this.FormData.password)
+              .then(res => {
+                if (res.code === 0) {
+                  this.$store.commit('modifyUserInfo', res.data);
+                  this.$router.push('/');
+                }
+              })
         } else {
           return false
         }
@@ -89,7 +94,7 @@ export default {
   transform: translate(-50%, 0);
 }
 
-.imgLogo{
+.imgLogo {
   width: 100%;
 }
 

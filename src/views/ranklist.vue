@@ -9,14 +9,14 @@
         </el-table-column>
         <el-table-column label="Username" align="center">
           <template v-slot="scope">
-            <el-link :href="'#/user/'+scope.row.username+'?part=page-top'" :underline="false">
+            <el-link :href="'https://codeforces.com/profile/'+scope.row.handle" :underline="false" target="_blank">
               {{ scope.row.username }}
             </el-link>
           </template>
         </el-table-column>
         <el-table-column label="Nickname" align="center">
           <template v-slot="scope">
-            <el-link :href="'#/user/'+scope.row.username+'?part=page-top'" :underline="false">
+            <el-link :href="'https://codeforces.com/profile/'+scope.row.handle" :underline="false" target="_blank">
               <b class="ColoredName" :style="getNameColorInfo(scope.row, 2)">
                                     <span :style="'border-top-left-radius:5px; border-bottom-left-radius: 5px;' +
                                          'padding:3px; padding-right:0px;'+getNameColorInfo(scope.row, 0)">{{
@@ -33,7 +33,7 @@
         <el-table-column label="Rating" align="center" width="100px" prop="rating" sortable
                          :sort-method="function(a,b) {return Number(a.rating) - Number(b.rating)}">
           <template v-slot="scope">
-            <el-link :href="'#/user/'+scope.row.username+'?part=rating'" :underline="false">{{
+            <el-link :href="'https://codeforces.com/profile/'+scope.row.handle" :underline="false" target="_blank">{{
                 scope.row.rating
               }}
             </el-link>

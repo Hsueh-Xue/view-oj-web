@@ -66,6 +66,7 @@ export default {
         data.data.start_date = this.inputDate[0]
         data.data.end_date = this.inputDate[1]
       }
+      this.$store.commit('updateOverview', data)
     },
     refreshChart() {
       this.isRefresh = false

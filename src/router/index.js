@@ -10,19 +10,19 @@ const routes = [
         }
     },
     {
-        path: '/ranklist',
-        name: 'Ranklist',
-        component: () => import('views/ranklist.vue'),
-        meta: {
-            title: 'Ranklist - viewOJ'
-        }
-    },
-    {
         path: '/login',
         name: 'Login',
         component: () => import('views/login.vue'),
         meta: {
             title: 'Login - viewOJ'
+        }
+    },
+    {
+        path: '/ranklist',
+        name: 'Ranklist',
+        component: () => import('views/ranklist.vue'),
+        meta: {
+            title: 'Ranklist - viewOJ'
         }
     },
     {
@@ -32,7 +32,16 @@ const routes = [
         meta: {
             title: 'Userinfo - viewOJ'
         }
-    }, {
+    },
+    {
+        path: '/overview',
+        name: 'overview',
+        component: () => import('components/charts/overview-chart'),
+        meta: {
+            title: 'OverView - viewOJ'
+        }
+    },
+    {
         path: '/error401',
         name: 'error401-page',
         component: () => import('views/error401'),

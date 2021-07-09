@@ -44,8 +44,8 @@ export default {
   data() {
     return {
       FormData: {
-        username: '2017212212083',
-        password: '2017212212083'
+        username: '',
+        password: ''
       },
       rules: {
         username: [{required: true, message: 'Please enter your username!', trigger: 'blur'}],
